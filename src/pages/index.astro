@@ -44,35 +44,56 @@ import portadaIndex from "../assets/portada-index.webp";
     <div style="height:20px;"></div>
     <!-- 3. SECCIÓN UNO -->
     <section
-      style="position:relative; width:100vw; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; background:#51c51b; padding:3rem 0; display:flex; flex-direction:row; justify-content:center; align-items:center; gap:2rem; box-shadow:0 2px 12px #0001;"
+      style="position:relative; width:100vw; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; background:#51c51b; padding:3rem 0; display:flex; flex-direction:row; justify-content:center; align-items:center; gap:2rem; box-shadow:0 2px 12px #0001; flex-wrap:wrap;"
     >
+      <style>
+        @media (max-width: 800px) {
+          .servicio-rect {
+            width: 90vw !important;
+            max-width: 400px;
+            height: auto !important;
+            margin-bottom: 1.5rem;
+          }
+          .servicios-flex {
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+        }
+      </style>
       <div
-        style="background: url('/src/assets/img-rtm.webp') center/cover no-repeat, #fff; border-radius:16px; box-shadow:0 2px 12px #0002; width:520px; height:240px; display:flex; flex-direction:column; justify-content:center; align-items:center;"
+        class="servicios-flex"
+        style="display:flex; flex-direction:row; justify-content:center; align-items:center; gap:2rem; width:100%; flex-wrap:wrap;"
       >
-        <h3
-          style="color:#51c51b; font-size:2.1rem; margin-bottom:0.7rem; background:rgba(255,255,255,0.85); padding:0.2em 0.8em; border-radius:8px;"
+        <div
+          class="servicio-rect"
+          style="background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/img-rtm.webp') center/cover no-repeat, #fff; border-radius:16px; box-shadow:0 6px 24px #0006; width:540px; height:320px; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;"
         >
-          Revisión Técnico Mecánica
-        </h3>
-        <a
-          href="#"
-          style="display:inline-block; background:#51c51b; color:#fff; padding:0.7rem 2rem; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.1rem; margin-top:0.7rem; box-shadow:0 2px 8px #0002;"
-          >Conoce más</a
+          <h3
+            style="color:#fff; font-size:2.4rem; margin-bottom:0.7rem; padding:0.2em 0.8em; border-radius:8px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);"
+          >
+            Revisión Técnico Mecánica
+          </h3>
+          <a
+            href="#"
+            style="display:inline-block; background:#51c51b; color:#fff; padding:0.7rem 2rem; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.1rem; margin-top:0.7rem; box-shadow:0 2px 8px #0002; margin-bottom:1.2rem; align-self:center; max-width:90%; word-break:break-word;"
+            >Conoce más</a
+          >
+        </div>
+        <div
+          class="servicio-rect"
+          style="background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/img-certificado.webp') center/cover no-repeat, #fff; border-radius:16px; box-shadow:0 6px 24px #0006; width:540px; height:320px; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;"
         >
-      </div>
-      <div
-        style="background: url('/src/assets/img-certificado.webp') center/cover no-repeat, #fff; border-radius:16px; box-shadow:0 2px 12px #0002; width:520px; height:240px; display:flex; flex-direction:column; justify-content:center; align-items:center;"
-      >
-        <h3
-          style="color:#51c51b; font-size:2.1rem; margin-bottom:0.7rem; background:rgba(255,255,255,0.85); padding:0.2em 0.8em; border-radius:8px;"
-        >
-          Descargar Certificado RTM
-        </h3>
-        <a
-          href="#"
-          style="display:inline-block; background:#51c51b; color:#fff; padding:0.7rem 2rem; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.1rem; margin-top:0.7rem; box-shadow:0 2px 8px #0002;"
-          >Conoce más</a
-        >
+          <h3
+            style="color:#fff; font-size:2.4rem; margin-bottom:0.7rem; padding:0.2em 0.8em; border-radius:8px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);"
+          >
+            Descargar Certificado RTM
+          </h3>
+          <a
+            href="#"
+            style="display:inline-block; background:#51c51b; color:#fff; padding:0.7rem 2rem; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.1rem; margin-top:0.7rem; box-shadow:0 2px 8px #0002; margin-bottom:1.2rem; align-self:center; max-width:90%; word-break:break-word;"
+            >Conoce más</a
+          >
+        </div>
       </div>
     </section>
     <!-- 4. ESPACIADOR INFERIOR SERVICIOS -->
@@ -82,6 +103,11 @@ import portadaIndex from "../assets/portada-index.webp";
       id="contenedor-tercera-seccion"
       style="width:100%; max-width:1200px; margin:0 auto; min-height:120px;"
     >
+      <h2
+        style="color:#51c51b; font-size:2.2rem; margin-bottom:1.2rem; margin-top:0.5rem; font-weight:bold;"
+      >
+        Tarifas 2025 para tu Revisión Técnico Mecánica
+      </h2>
     </div>
   </main>
 </Layout>
