@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import portadaIndex from "../assets/portada-index.webp";
+---
+
+<Layout>
+  <main style="padding:0 2rem 2rem 2rem; min-height:60vh; text-align:center;">
+    <!-- 1. PORTADA PRINCIPAL -->
+    <section
+      style="position:relative; width:100vw; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; overflow:hidden; height:580px;"
+    >
+      <Image
+        src={portadaIndex}
+        alt="Portada CDA"
+        style="width:100vw; height:540px; object-fit:cover; border-top:8px solid #fecc06; border-bottom:8px solid #fecc06; border-left:none; border-right:none; border-radius:0; display:block; margin:0 auto;"
+        width={1920}
+        height={540}
+        format="webp"
+        quality={90}
+        loading="eager"
+      />
+      <div
+        style="position:absolute; top:0; left:0; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff;"
+      >
+        <h1
+          style="margin:0; font-size:4.5rem; text-shadow:0 2px 8px #000; color:#51c51b;"
+        >
+          CDA TU REVISION
+        </h1>
+        <h2
+          style="margin:1em 0 1.5rem; font-size:2.1rem; text-shadow:0 2px 8px #000;"
+        >
+          Revisión técnico mecánica para motos
+        </h2>
+        <a
+          href="/contacto"
+          style="display:inline-block; background:#51c51b; color:#fff; padding:0.75rem 2rem; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.1rem; box-shadow:0 2px 8px #0003; margin-top:1rem;"
+          >Contáctanos</a
+        >
+      </div>
+    </section>
+    <!-- 2. ESPACIADOR INFERIOR PORTADA -->
+    <div style="height:20px;"></div>
+    <!-- 3. SECCIÓN DE SERVICIOS -->
+    <section
+      style="width:100%; max-width:1200px; margin:0 auto; background:#51c51b; padding:3rem 0; display:flex; flex-direction:row; justify-content:center; align-items:center; gap:2rem; border-radius:18px; box-shadow:0 2px 12px #0001;"
+    >
+      <div
+        style="background: url('/src/assets/img-rtm.webp') center/cover no-repeat, #fff; border-radius:16px; box-shadow:0 2px 12px #0002; width:520px; height:240px; display:flex; flex-direction:column; justify-content:center; align-items:center;"
+      >
+        <h3
+          style="color:#51c51b; font-size:2.1rem; margin-bottom:0.7rem; background:rgba(255,255,255,0.85); padding:0.2em 0.8em; border-radius:8px;"
+        >
+          Revisión Técnico Mecánica
+        </h3>
+        <a
+          href="#"
+          style="display:inline-block; background:#51c51b; color:#fff; padding:0.7rem 2rem; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.1rem; margin-top:0.7rem; box-shadow:0 2px 8px #0002;"
+          >Conoce más</a
+        >
+      </div>
+      <div
+        style="background: url('/src/assets/img-certificado.webp') center/cover no-repeat, #fff; border-radius:16px; box-shadow:0 2px 12px #0002; width:520px; height:240px; display:flex; flex-direction:column; justify-content:center; align-items:center;"
+      >
+        <h3
+          style="color:#51c51b; font-size:2.1rem; margin-bottom:0.7rem; background:rgba(255,255,255,0.85); padding:0.2em 0.8em; border-radius:8px;"
+        >
+          Descargar Certificado RTM
+        </h3>
+        <a
+          href="#"
+          style="display:inline-block; background:#51c51b; color:#fff; padding:0.7rem 2rem; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.1rem; margin-top:0.7rem; box-shadow:0 2px 8px #0002;"
+          >Conoce más</a
+        >
+      </div>
+    </section>
+    <!-- 4. ESPACIADOR INFERIOR SERVICIOS -->
+    <div style="height:40px;"></div>
+    <!-- 5. CONTENEDOR TERCERA SECCIÓN (VACÍO) -->
+    <div
+      id="contenedor-tercera-seccion"
+      style="width:100%; max-width:1200px; margin:0 auto; min-height:120px;"
+    >
+    </div>
+  </main>
+</Layout>
