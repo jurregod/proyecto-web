@@ -54,6 +54,12 @@ import portadaIndex from "../assets/portada-index.webp";
             height: auto !important;
             margin-bottom: 1.5rem;
           }
+          .servicio-rect:first-child {
+            border-radius: 16px 16px 0 0 !important;
+          }
+          .servicio-rect:last-child {
+            border-radius: 0 0 16px 16px !important;
+          }
           .servicios-flex {
             flex-direction: column !important;
             align-items: center !important;
@@ -66,7 +72,7 @@ import portadaIndex from "../assets/portada-index.webp";
       >
         <div
           class="servicio-rect"
-          style="background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/img-rtm.webp') center/cover no-repeat, #fff; border-radius:16px; box-shadow:0 6px 24px #0006; width:540px; height:320px; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;"
+          style="background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/img-rtm.webp') center/cover no-repeat, #fff; border-radius:16px 0 0 16px; box-shadow:0 6px 24px #0006; width:540px; height:320px; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;"
         >
           <h3
             style="color:#fff; font-size:2.4rem; margin-bottom:0.7rem; padding:0.2em 0.8em; border-radius:8px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);"
@@ -74,14 +80,14 @@ import portadaIndex from "../assets/portada-index.webp";
             Revisión Técnico Mecánica
           </h3>
           <a
-            href="#"
+            href="/servicios/revision-tecnico-mecanica"
             style="display:inline-block; background:#51c51b; color:#fff; padding:0.7rem 2rem; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.1rem; margin-top:0.7rem; box-shadow:0 2px 8px #0002; margin-bottom:1.2rem; align-self:center; max-width:90%; word-break:break-word;"
             >Conoce más</a
           >
         </div>
         <div
           class="servicio-rect"
-          style="background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/img-certificado.webp') center/cover no-repeat, #fff; border-radius:16px; box-shadow:0 6px 24px #0006; width:540px; height:320px; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;"
+          style="background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/img-certificado.webp') center/cover no-repeat, #fff; border-radius:0 16px 16px 0; box-shadow:0 6px 24px #0006; width:540px; height:320px; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;"
         >
           <h3
             style="color:#fff; font-size:2.4rem; margin-bottom:0.7rem; padding:0.2em 0.8em; border-radius:8px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);"
@@ -89,7 +95,7 @@ import portadaIndex from "../assets/portada-index.webp";
             Descargar Certificado RTM
           </h3>
           <a
-            href="#"
+            href="/servicios/descargar-certificado"
             style="display:inline-block; background:#51c51b; color:#fff; padding:0.7rem 2rem; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.1rem; margin-top:0.7rem; box-shadow:0 2px 8px #0002; margin-bottom:1.2rem; align-self:center; max-width:90%; word-break:break-word;"
             >Conoce más</a
           >
@@ -108,6 +114,371 @@ import portadaIndex from "../assets/portada-index.webp";
       >
         Tarifas 2025 para tu Revisión Técnico Mecánica
       </h2>
+
+      <!-- Tabla de tarifas -->
+      <style>
+        .tarifas-container {
+          overflow-x: auto;
+          margin: 1.5rem auto;
+        }
+        .tarifas-table {
+          width: 100%;
+          max-width: 900px;
+          margin: 0 auto;
+          border-collapse: collapse;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          overflow: hidden;
+        }
+        .tarifas-header {
+          background: #51c51b;
+          color: #fff;
+        }
+        .tarifas-th {
+          padding: 1rem 0.8rem;
+          text-align: center;
+          font-weight: bold;
+          border: 1px solid #ddd;
+        }
+        .tarifas-td {
+          padding: 1.2rem 1rem;
+          text-align: center;
+          font-size: 1.3rem;
+          font-weight: bold;
+          color: #333;
+          border: 1px solid #ddd;
+          background: #f9f9f9;
+        }
+        .tarifa-card {
+          display: none;
+        }
+
+        @media (max-width: 768px) {
+          .tarifas-table {
+            display: none;
+          }
+          .tarifa-card {
+            display: block;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 1rem auto;
+            padding: 1rem;
+            max-width: 90%;
+            border-left: 5px solid #51c51b;
+          }
+          .tarifa-card-header {
+            background: #51c51b;
+            color: #fff;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+            text-align: center;
+          }
+          .tarifa-card-valor {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            padding: 0.8rem 0;
+          }
+        }
+      </style>
+
+      <div class="tarifas-container">
+        <table class="tarifas-table">
+          <thead>
+            <tr class="tarifas-header">
+              <th class="tarifas-th">Modelos ➜2025 a 2023</th>
+              <th class="tarifas-th">Modelos ➜2022 a 2018</th>
+              <th class="tarifas-th">Modelos ➜2017 a 2009</th>
+              <th class="tarifas-th">Modelos ➜2008 > Atrás</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="tarifas-td">$209.000</td>
+              <td class="tarifas-td">$209.300</td>
+              <td class="tarifas-td">$209.600</td>
+              <td class="tarifas-td">$209.300</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Tarjetas para móviles -->
+        <div class="tarifa-card">
+          <div class="tarifa-card-header">Modelos ➜2025 a 2023</div>
+          <div class="tarifa-card-valor">$209.000</div>
+        </div>
+
+        <div class="tarifa-card">
+          <div class="tarifa-card-header">Modelos ➜2022 a 2018</div>
+          <div class="tarifa-card-valor">$209.300</div>
+        </div>
+
+        <div class="tarifa-card">
+          <div class="tarifa-card-header">Modelos ➜2017 a 2009</div>
+          <div class="tarifa-card-valor">$209.600</div>
+        </div>
+
+        <div class="tarifa-card">
+          <div class="tarifa-card-header">Modelos ➜2008 > Atrás</div>
+          <div class="tarifa-card-valor">$209.300</div>
+        </div>
+      </div>
+
+      <p
+        style="font-style:italic; color:#666; margin-top:0.5rem; margin-bottom:1.5rem; font-size:0.9rem;"
+      >
+        *Los valores fijados anteriormente son aproximados a pesos cerrados*
+      </p>
+
+      <!-- Línea divisora amarilla -->
+      <div
+        style="width:100%; max-width:900px; height:6px; background-color:#fecc06; margin:0 auto 3rem; border-radius:3px; box-shadow:0 2px 6px rgba(0,0,0,0.1);"
+      >
+      </div>
     </div>
+
+    <!-- 6. SECCIÓN SEDES -->
+    <div
+      id="contenedor-sedes"
+      style="width:100%; max-width:1200px; margin:0 auto; min-height:120px; padding:0 1rem;"
+    >
+      <h2
+        style="color:#51c51b; font-size:2.2rem; margin-bottom:1rem; margin-top:0.5rem; font-weight:bold;"
+      >
+        Nuestras Sedes
+      </h2>
+
+      <p
+        style="text-align:center; color:#333; max-width:800px; margin:0 auto 2rem; line-height:1.5;"
+      >
+        Contamos con dos centros de diagnóstico automotor estratégicamente
+        ubicados en Bogotá para brindarte un servicio ágil y cercano. Ambas
+        sedes están completamente equipadas para realizar revisiones técnico
+        mecánicas de motos con la última tecnología.
+      </p>
+
+      <style>
+        .sedes-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 2rem;
+          margin-bottom: 4rem;
+        }
+        .sede-item {
+          flex: 1;
+          min-width: 300px;
+          max-width: 650px;
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+          border-radius: 16px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+          position: relative;
+        }
+        .sede-item:hover {
+          transform: translateY(-5px);
+        }
+        .sede-header {
+          background: #51c51b;
+          color: white;
+          padding: 1rem;
+          font-size: 1.5rem;
+          font-weight: bold;
+          text-align: center;
+        }
+        .sede-map-container {
+          position: relative;
+          width: 100%;
+          padding-bottom: 75%; /* Proporción de aspecto 4:3 */
+          height: 0;
+          overflow: hidden;
+        }
+        .sede-map {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+        .sede-address {
+          padding: 1.2rem 1rem;
+          background: #f9f9f9;
+          color: #333;
+          text-align: center;
+          border-top: 4px solid #fecc06;
+        }
+        .sede-address p {
+          margin: 0.3rem 0;
+          line-height: 1.5;
+        }
+        .sede-address p:first-child {
+          color: #51c51b;
+          font-size: 1.2rem;
+          margin-bottom: 0.6rem;
+        }
+        .sede-address p strong {
+          color: #51c51b;
+        }
+        .sede-button {
+          display: inline-block;
+          background: #51c51b;
+          color: white;
+          padding: 0.6rem 1.5rem;
+          border-radius: 6px;
+          text-decoration: none;
+          font-weight: bold;
+          margin-top: 0.8rem;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+          transition:
+            transform 0.2s ease,
+            background-color 0.2s ease;
+        }
+        .sede-button:hover {
+          background: #48b118;
+          transform: translateY(-2px);
+        }
+        @media (max-width: 768px) {
+          .sede-item {
+            min-width: 90%;
+          }
+          .sede-map-container {
+            padding-bottom: 65%; /* Proporción de aspecto ligeramente diferente para móviles */
+          }
+        }
+      </style>
+
+      <div class="sedes-container">
+        <div class="sede-item">
+          <div class="sede-header">CDA Suba - Revisión de Motos</div>
+          <div class="sede-map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7952.414146270389!2d-74.09694012072288!3d4.734058000000014!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f8523c1d7eeb3%3A0xb23c370281261ccc!2sCDA%20Tu%20Revisi%C3%B3n%20Suba%20Tabor!5e0!3m2!1ses-419!2sco!4v1718733277241!5m2!1ses-419!2sco"
+              class="sede-map"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+          <div class="sede-address">
+            <p><strong>CDA Tu Revisión Suba Tabor</strong></p>
+            <p>Av. Calle 132 #98C - 33, Bogotá</p>
+            <p>📱 Teléfono: 320 568 0589</p>
+            <p>⏰ Horario: Lunes a Sábado 7:00 AM - 7:00 PM</p>
+            <p>⏰ Domingos y Festivos: 9:00 AM - 2:00 PM</p>
+            <a href="/sedes#suba" class="sede-button">Ver detalles de la sede</a
+            >
+          </div>
+        </div>
+
+        <div class="sede-item">
+          <div class="sede-header">CDA Kennedy - Revisión de Motos</div>
+          <div class="sede-map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7953.673578338969!2d-74.16442252072288!3d4.623191199999985!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9f1d05f3574b%3A0x95b19d56adf0b9a1!2sCDA%20Tu%20Revisi%C3%B3n%20Corabastos!5e0!3m2!1ses-419!2sco!4v1718733353991!5m2!1ses-419!2sco"
+              class="sede-map"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+          <div class="sede-address">
+            <p><strong>CDA Tu Revisión Corabastos</strong></p>
+            <p>Av. Cra 80 #41B - 28 Sur, Bogotá</p>
+            <p>📱 Teléfono: 314 469 2424</p>
+            <p>⏰ Horario: Lunes a Sábado 7:00 AM - 7:00 PM</p>
+            <p>⏰ Domingos y Festivos: 9:00 AM - 2:00 PM</p>
+            <a href="/sedes#kennedy" class="sede-button"
+              >Ver detalles de la sede</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Línea divisora amarilla -->
+      <div
+        style="width:100%; max-width:900px; height:6px; background-color:#fecc06; margin:0 auto 1.5rem; border-radius:3px; box-shadow:0 2px 6px rgba(0,0,0,0.1);"
+      >
+      </div>
+    </div>
+
+    <!-- 7. SECCIÓN EXPERIENCIA -->
+    <div
+      id="contenedor-experiencia"
+      style="width:100%; max-width:1200px; margin:1rem auto 1.5rem; padding:0.5rem 0; text-align:center;"
+    >
+      <p
+        style="font-size:2.4rem; color:#333; margin-bottom:0.5rem; font-weight:bold;"
+      >
+        Nuestra experiencia
+      </p>
+      <div
+        id="contador"
+        style="font-size:5rem; font-weight:bold; color:#51c51b; margin-bottom:0.3rem; text-shadow:0 1px 3px rgba(0,0,0,0.1);"
+      >
+        0
+      </div>
+      <p
+        style="font-size:1.5rem; color:#333; max-width:800px; margin:0 auto; line-height:1.3;"
+      >
+        Usuarios satisfechos con la calidad de nuestros servicios
+      </p>
+    </div>
+
+    <script>
+      // Función para animar el contador
+      document.addEventListener("DOMContentLoaded", () => {
+        const contadorEl = document.getElementById("contador");
+        const valorFinal = 38560;
+        const duracion = 6000; // duración en milisegundos (aumentada a 6 segundos)
+        const pasos = 200; // más pasos para una animación más suave
+        let valorActual = 0;
+
+        // Función para formatear el número con separadores de miles
+        const formatearNumero = (numero) => {
+          return numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        };
+
+        // Iniciar animación cuando el elemento esté en el viewport
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Función de animación
+                const incremento = Math.ceil(valorFinal / pasos);
+                const intervalo = duracion / pasos;
+
+                const animacion = setInterval(() => {
+                  valorActual += incremento;
+
+                  if (valorActual >= valorFinal) {
+                    valorActual = valorFinal;
+                    clearInterval(animacion);
+                  }
+
+                  if (contadorEl) {
+                    contadorEl.textContent = formatearNumero(valorActual);
+                  }
+                }, intervalo);
+
+                // Desconectar el observer después de iniciar la animación
+                observer.disconnect();
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        if (contadorEl) {
+          observer.observe(contadorEl);
+        }
+      });
+    </script>
   </main>
 </Layout>
