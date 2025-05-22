@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import imgRTM from "../assets/img-rtm.webp";
 
 interface Props {
   title?: string;
@@ -11,7 +12,7 @@ interface Props {
 const {
   title = "Revisión tecnomecánica en Bogotá | CDA Tu Revisión",
   description = "Centro de diagnóstico automotor especializado en revisión técnico mecánica para motos en Bogotá. Servicio rápido, confiable y a precios competitivos.",
-  image = "/img-rtm.webp",
+  image = imgRTM.src,
 } = Astro.props;
 ---
 

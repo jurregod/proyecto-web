@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import imgRTM from "../assets/img-rtm.webp";
+import imgCertificado from "../assets/img-certificado.webp";
+import logoSoat from "../assets/logo-soat.webp";
 ---
 
 <Layout title="Servicios | CDA Tu Revisión">
@@ -20,7 +23,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="servicio-contenido">
           <div class="imagen-servicio">
             <img
-              src="/img-rtm.webp"
+              src={imgRTM.src}
               alt="Revisión técnico mecánica"
               width="500"
               height="350"
@@ -80,7 +83,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="servicio-contenido">
           <div class="imagen-servicio">
             <img
-              src="/img-certificado.webp"
+              src={imgCertificado.src}
               alt="Certificado RTM digital"
               width="500"
               height="350"
@@ -135,7 +138,7 @@ import Layout from "../layouts/Layout.astro";
         <div class="servicio-contenido">
           <div class="imagen-servicio">
             <img
-              src="/logo-soat.webp"
+              src={logoSoat.src}
               alt="Adquiere tu SOAT"
               width="500"
               height="350"
@@ -151,15 +154,16 @@ import Layout from "../layouts/Layout.astro";
               <span class="subrayado-titulo" aria-hidden="true"></span>
             </h2>
             <p class="descripcion">
-              Necesitas adquirir tu póliza SOAT, pero la motocicleta no se
-              encuentra a nombre tuyo, tranquilo en cualquiera de nuestras sedes
-              puede adquirirlo de forma fácil y rápida.
+              Adquiere tu póliza SOAT de forma facil, rapida y segura con
+              nosotros, recuerda que no necesitas ser el propietario del
+              vehiculo para poder comprar tu póliza, además que esta puede estar
+              a tu nombre o a nombre de otra persona.
             </p>
 
             <div class="nota-destacada" role="note">
               <p class="cursiva">
-                (Recuerda que el servicio de venta de SOAT esta reservado para
-                los clientes realizan la Revisión Técnico Mecánica con nosotros)
+                (Recuerda que el servicio de venta de SOAT solo se realiza con
+                pagos mediante plataforma Nequi o Daviplata)
               </p>
             </div>
 
@@ -274,6 +278,11 @@ import Layout from "../layouts/Layout.astro";
   }
 
   .imagen-servicio img:hover {
+    transform: perspective(1000px) rotateY(0deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+
+  .alterno .imagen-servicio img:hover {
     transform: perspective(1000px) rotateY(0deg);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   }
