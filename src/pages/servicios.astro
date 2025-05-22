@@ -2,9 +2,692 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
-  <main style="padding:2rem; min-height:60vh; text-align:center;">
-    <h2>Servicios</h2>
-    <p>Conoce los servicios que ofrecemos.</p>
+<Layout title="Servicios | CDA Tu Revisión">
+  <main>
+    <div class="titulo-principal-contenedor">
+      <h1 class="titulo-principal">
+        Servicios<span class="destaque-titulo"></span>
+      </h1>
+    </div>
+
+    <!-- Sección 1: Revisión técnico mecánica -->
+    <section
+      class="servicio-seccion"
+      id="revision"
+      aria-labelledby="titulo-revision"
+    >
+      <div class="container">
+        <div class="servicio-contenido">
+          <div class="imagen-servicio">
+            <img
+              src="/img-rtm.webp"
+              alt="Revisión técnico mecánica"
+              width="500"
+              height="350"
+              loading="lazy"
+            />
+            <div class="etiqueta-servicio izquierda" aria-hidden="true">
+              Servicio Destacado
+            </div>
+          </div>
+          <div class="contenido-servicio">
+            <h2 id="titulo-revision">
+              Revisión técnico mecánica
+              <span class="subrayado-titulo" aria-hidden="true"></span>
+            </h2>
+            <p class="descripcion">
+              Todos nuestros centros de diagnóstico se especializan en la
+              revisión de motocicletas 2T y 4T. Este proceso consiste en la
+              revisión del buen funcionamiento de tu motocicleta, con el
+              objetivo de prevenir posibles fallas y así evitar accidentes.
+            </p>
+
+            <p class="subtitulo">Que evaluamos:</p>
+            <ul class="lista-items" role="list">
+              <li>
+                <span class="check-icon" aria-hidden="true">✓</span>
+                <span>Inspección sensorial.</span>
+              </li>
+              <li>
+                <span class="check-icon" aria-hidden="true">✓</span>
+                <span>Prueba de luces.</span>
+              </li>
+              <li>
+                <span class="check-icon" aria-hidden="true">✓</span>
+                <span>Prueba de frenos.</span>
+              </li>
+              <li>
+                <span class="check-icon" aria-hidden="true">✓</span>
+                <span>Análisis de gases.</span>
+              </li>
+            </ul>
+
+            <div class="boton-contenedor">
+              <a href="/contacto" class="boton-servicio">Adquiere tu RTM</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 2: Certificado RTM digital -->
+    <section
+      class="servicio-seccion alterno"
+      id="certificado"
+      aria-labelledby="titulo-certificado"
+    >
+      <div class="container">
+        <div class="servicio-contenido">
+          <div class="imagen-servicio">
+            <img
+              src="/img-certificado.webp"
+              alt="Certificado RTM digital"
+              width="500"
+              height="350"
+              loading="lazy"
+            />
+            <div class="etiqueta-servicio derecha" aria-hidden="true">
+              Servicio Online
+            </div>
+          </div>
+          <div class="contenido-servicio">
+            <h2 id="titulo-certificado">
+              Certificado RTM digital
+              <span class="subrayado-titulo" aria-hidden="true"></span>
+            </h2>
+            <p class="descripcion">
+              En esta sección podrás ingresar a la pagina del RUNT y descargar
+              de forma virtual tu certificado de RTM.
+            </p>
+
+            <div class="nota-destacada" role="note">
+              <p>
+                Recuerda que en caso de perdida o daño de tu certificado físico,
+                siempre te puedes acercar a cualquiera de nuestras instalaciones
+                y solicitar tu copia, sin ningún costo.
+              </p>
+            </div>
+
+            <p class="texto-cursiva">
+              Da clic en el botón "Descargar ahora" para ver nuestra guía sobre
+              como descargar tu certificado de RTM, de forma digital.
+            </p>
+
+            <div class="boton-contenedor">
+              <a
+                href="https://www.runt.com.co/consultaCiudadana/#/consultaVehiculo"
+                class="boton-servicio"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Descargar certificado RTM digital (abre en nueva ventana)"
+              >
+                Descargar ahora
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 3: Adquiere tu SOAT -->
+    <section class="servicio-seccion" id="soat" aria-labelledby="titulo-soat">
+      <div class="container">
+        <div class="servicio-contenido">
+          <div class="imagen-servicio">
+            <img
+              src="/logo-soat.webp"
+              alt="Adquiere tu SOAT"
+              width="500"
+              height="350"
+              loading="lazy"
+            />
+            <div class="etiqueta-servicio izquierda" aria-hidden="true">
+              Servicio Adicional
+            </div>
+          </div>
+          <div class="contenido-servicio">
+            <h2 id="titulo-soat">
+              Adquiere tu SOAT
+              <span class="subrayado-titulo" aria-hidden="true"></span>
+            </h2>
+            <p class="descripcion">
+              Necesitas adquirir tu póliza SOAT, pero la motocicleta no se
+              encuentra a nombre tuyo, tranquilo en cualquiera de nuestras sedes
+              puede adquirirlo de forma fácil y rápida.
+            </p>
+
+            <div class="nota-destacada" role="note">
+              <p class="cursiva">
+                (Recuerda que el servicio de venta de SOAT esta reservado para
+                los clientes realizan la Revisión Técnico Mecánica con nosotros)
+              </p>
+            </div>
+
+            <div class="boton-contenedor">
+              <a href="/contacto" class="boton-servicio">Adquiere tu SOAT</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </Layout>
+
+<style>
+  /* Estilos generales */
+  main {
+    padding: 1rem;
+    min-height: 60vh;
+  }
+
+  /* Título Principal */
+  .titulo-principal-contenedor {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 1rem;
+    position: relative;
+    background: linear-gradient(
+      to bottom,
+      rgba(247, 255, 247, 0.8),
+      rgba(255, 255, 255, 0)
+    );
+    border-bottom: 1px solid rgba(81, 197, 27, 0.1);
+  }
+
+  .titulo-principal {
+    color: #51c51b;
+    font-size: 4rem;
+    font-weight: 900;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.05);
+  }
+
+  .destaque-titulo {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #fecc06;
+    border-radius: 4px;
+    z-index: -1;
+    transform: skewX(-10deg);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .servicio-seccion {
+    padding: 4rem 0;
+    min-height: 20vh;
+    background-color: #fff;
+  }
+
+  .servicio-seccion.alterno {
+    background-color: #f7fff7;
+  }
+
+  /* Estilos para la estructura flex */
+  .servicio-contenido {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .alterno .servicio-contenido {
+    flex-direction: row-reverse;
+  }
+
+  .imagen-servicio,
+  .contenido-servicio {
+    flex: 1;
+    min-width: 280px;
+    position: relative;
+  }
+
+  /* Estilos para las imágenes */
+  .imagen-servicio {
+    text-align: center;
+  }
+
+  .imagen-servicio img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    transform: perspective(1000px) rotateY(3deg);
+  }
+
+  .alterno .imagen-servicio img {
+    transform: perspective(1000px) rotateY(-3deg);
+  }
+
+  .imagen-servicio img:hover {
+    transform: perspective(1000px) rotateY(0deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Etiquetas de servicio */
+  .etiqueta-servicio {
+    position: absolute;
+    top: -15px;
+    background-color: #51c51b;
+    color: white;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;
+    z-index: 2;
+  }
+
+  .etiqueta-servicio.izquierda {
+    left: -5px;
+  }
+
+  .etiqueta-servicio.derecha {
+    right: -5px;
+  }
+
+  /* Estilos para el contenido */
+  .contenido-servicio {
+    background-color: #f9f9f9;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .alterno .contenido-servicio {
+    background-color: white;
+  }
+
+  h2 {
+    color: #51c51b;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  .subrayado-titulo {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background-color: #fecc06;
+    border-radius: 2px;
+  }
+
+  .descripcion {
+    line-height: 1.8;
+    margin-bottom: 1.8rem;
+    font-size: 1.05rem;
+    color: #444;
+  }
+
+  .subtitulo {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    color: #333;
+  }
+
+  /* Lista de items */
+  .lista-items {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1.8rem;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .lista-items li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: flex-start;
+    transition: transform 0.2s ease;
+  }
+
+  .lista-items li:hover {
+    transform: translateX(5px);
+  }
+
+  .lista-items li:last-child {
+    margin-bottom: 0;
+  }
+
+  .check-icon {
+    color: white;
+    margin-right: 0.8rem;
+    background-color: #51c51b;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+
+  /* Nota destacada */
+  .nota-destacada {
+    background-color: #f0fff0;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.8rem;
+    border-left: 4px solid #51c51b;
+  }
+
+  .nota-destacada p {
+    margin: 0;
+    line-height: 1.7;
+    font-size: 1.05rem;
+  }
+
+  /* Texto en cursiva */
+  .texto-cursiva {
+    font-style: italic;
+    color: #555;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .cursiva {
+    font-style: italic;
+  }
+
+  /* Botones */
+  .boton-contenedor {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .boton-servicio {
+    display: inline-block;
+    background: linear-gradient(to right, #51c51b, #48b118);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(81, 197, 27, 0.3);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    min-width: 160px;
+    max-width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .boton-servicio:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(81, 197, 27, 0.4);
+  }
+
+  /* Media queries para responsividad */
+  @media (max-width: 1024px) {
+    .servicio-contenido {
+      gap: 2rem;
+    }
+
+    .contenido-servicio {
+      padding: 2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .titulo-principal {
+      font-size: 3.5rem;
+    }
+
+    .titulo-principal-contenedor {
+      margin-bottom: 3.5rem;
+      padding: 1.8rem 1rem;
+    }
+
+    .destaque-titulo {
+      height: 8px;
+      bottom: 6px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    main {
+      padding: 0.5rem;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      text-align: center;
+      display: block;
+    }
+
+    .subrayado-titulo {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+    }
+
+    .servicio-seccion {
+      padding: 3rem 0;
+    }
+
+    .servicio-contenido {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .alterno .servicio-contenido {
+      flex-direction: column;
+    }
+
+    .imagen-servicio {
+      order: 1;
+      margin: 0 auto;
+      max-width: 90%;
+    }
+
+    .contenido-servicio {
+      order: 2;
+      padding: 1.8rem;
+    }
+
+    .etiqueta-servicio {
+      font-size: 0.8rem;
+      padding: 6px 12px;
+      top: -10px;
+    }
+
+    .imagen-servicio img {
+      max-width: 90%;
+      transform: none !important;
+      margin: 0 auto;
+    }
+
+    .imagen-servicio img:hover {
+      transform: none !important;
+    }
+
+    .boton-servicio {
+      width: auto;
+      max-width: 90%;
+      padding: 0.9rem 1.8rem;
+      font-size: 1rem;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .descripcion,
+    .nota-destacada p {
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    .subtitulo {
+      text-align: center;
+    }
+
+    .lista-items {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 90%;
+    }
+
+    .titulo-principal-contenedor {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem 1rem;
+    }
+
+    .titulo-principal {
+      font-size: 3rem;
+    }
+
+    .destaque-titulo {
+      height: 7px;
+      bottom: 5px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    main {
+      padding: 0.25rem;
+    }
+
+    .container {
+      padding: 0 0.75rem;
+    }
+
+    .servicio-seccion {
+      padding: 2rem 0;
+    }
+
+    .contenido-servicio {
+      padding: 1.25rem;
+    }
+
+    .lista-items {
+      padding: 1rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .descripcion,
+    .nota-destacada p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .etiqueta-servicio {
+      top: -10px;
+      padding: 5px 10px;
+      font-size: 0.7rem;
+    }
+
+    .boton-servicio {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.95rem;
+      min-width: 140px;
+      max-width: 80%;
+    }
+
+    .texto-cursiva {
+      font-size: 0.9rem;
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      font-size: 0.8rem;
+    }
+
+    .titulo-principal-contenedor {
+      margin-bottom: 2rem;
+      padding: 1.2rem 0.8rem;
+    }
+
+    .titulo-principal {
+      font-size: 2.5rem;
+    }
+
+    .destaque-titulo {
+      height: 6px;
+      bottom: 4px;
+      transform: skewX(-5deg);
+    }
+  }
+
+  /* Media query para pantallas muy pequeñas */
+  @media (max-width: 360px) {
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    .servicio-seccion {
+      padding: 1.5rem 0;
+    }
+
+    .contenido-servicio {
+      padding: 1rem;
+    }
+
+    .descripcion,
+    .nota-destacada p {
+      font-size: 0.9rem;
+    }
+
+    .titulo-principal-contenedor {
+      margin-bottom: 1.5rem;
+      padding: 1rem 0.5rem;
+    }
+
+    .titulo-principal {
+      font-size: 2rem;
+    }
+
+    .destaque-titulo {
+      height: 5px;
+      bottom: 3px;
+      transform: skewX(-5deg);
+    }
+
+    .boton-servicio {
+      padding: 0.75rem 1.2rem;
+      font-size: 0.9rem;
+      min-width: 120px;
+      max-width: 75%;
+      border-radius: 40px;
+    }
+  }
+</style>
