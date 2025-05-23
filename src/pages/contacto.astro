@@ -3,12 +3,74 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import horarioSuba from "../assets/horario-suba.webp";
 import horarioCorabastos from "../assets/horario-corabastos.webp";
+
+// Metadatos específicos para la página de contacto
+const pageTitle = "Contacto | Revisión tecnomecánica para motos en Bogotá";
+const pageDescription =
+  "CDA Tu Revisión Suba Tabor | CDA Tu Revisión Corabastos | Revisión Técnico Mecánica para Motocicletas 2T y 4T | Suba | Kennedy | Bogotá";
+const pageImage = horarioSuba.src;
+
+// Datos estructurados para SEO (schema.org)
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contacto CDA Tu Revisión",
+  mainEntity: {
+    "@type": "LocalBusiness",
+    name: "CDA Tu Revisión",
+    description:
+      "Centro de Diagnóstico Automotor para revisión técnico mecánica de motos en Bogotá",
+    telephone: ["+573205680589", "+573144692424"],
+    email: "info@cdaturevisin.com",
+    openingHours: "Mo-Sa 07:00-19:00, Su,PH 09:00-14:00",
+    location: [
+      {
+        "@type": "Place",
+        name: "CDA Tu Revisión Suba Tabor",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Av. Calle 132 #98C-33",
+          addressLocality: "Bogotá",
+          addressRegion: "DC",
+          addressCountry: "CO",
+        },
+        telephone: "+573205680589",
+      },
+      {
+        "@type": "Place",
+        name: "CDA Tu Revisión Corabastos",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Av. Cra 80 #41B - 28 Sur",
+          addressLocality: "Bogotá",
+          addressRegion: "DC",
+          addressCountry: "CO",
+        },
+        telephone: "+573144692424",
+      },
+    ],
+  },
+};
+
+// Keywords para SEO
+const keywords =
+  "contacto CDA, teléfono revisión técnico mecánica, horarios CDA, dirección CDA Bogotá, ubicación centros diagnóstico automotor";
 ---
 
-<Layout
-  title="Contacto | CDA Tu Revisión"
-  description="Contacta con nuestras sedes de revisión técnico mecánica para motos en Bogotá. Horarios, teléfonos y ubicación de nuestros centros de diagnóstico automotor."
->
+<Layout title={pageTitle} description={pageDescription} image={pageImage}>
+  <!-- Schema.org JSON-LD para SEO -->
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(schemaData)}
+  />
+
+  <!-- Metadatos adicionales para SEO -->
+  <meta name="keywords" content={keywords} slot="head" />
+  <meta name="robots" content="index, follow" slot="head" />
+  <meta name="author" content="CDA Tu Revisión" slot="head" />
+  <meta name="geo.placename" content="Bogotá, Colombia" slot="head" />
+  <meta name="geo.region" content="CO-DC" slot="head" />
   <main
     style="min-height:60vh; text-align:center; position:relative; width:100%; padding-bottom:2rem;"
   >

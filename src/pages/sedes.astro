@@ -1,11 +1,93 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+// Metadatos específicos para la página de sedes
+const pageTitle = "Nuestras Sedes | CDA Tu Revisión - Suba y Kennedy Bogotá";
+const pageDescription =
+  "CDA Tu Revisión Suba Tabor | CDA Tu Revisión Corabastos | Tecnomecánica de motos | Kennedy | Suba | Norte | Sur | Bogotá";
+const pageImage = "/favicon.webp";
+
+// Datos estructurados para SEO (schema.org) - Sede Suba
+const schemaSuba = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "CDA Tu Revisión Suba Tabor",
+  description:
+    "Centro de Diagnóstico Automotor autorizado para revisión técnico mecánica de motos en el norte de Bogotá",
+  url: new URL("#suba", Astro.url).toString(),
+  logo: new URL("/favicon.webp", Astro.url).toString(),
+  image: new URL("/favicon.webp", Astro.url).toString(),
+  telephone: "+573205680589",
+  priceRange: "$209.000 - $209.600",
+  currenciesAccepted: "COP",
+  paymentAccepted: "Efectivo, tarjeta de crédito, tarjeta débito",
+  openingHours: "Mo-Sa 07:00-19:00, Su,PH 09:00-14:00",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Av. Calle 132 #98C-33",
+    addressLocality: "Bogotá",
+    addressRegion: "DC",
+    addressCountry: "CO",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "4.734058",
+    longitude: "-74.096940",
+  },
+  hasMap: "https://maps.google.com/?q=CDA+Tu+Revisión+Suba+Tabor",
+};
+
+// Datos estructurados para SEO (schema.org) - Sede Kennedy
+const schemaKennedy = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "CDA Tu Revisión Corabastos",
+  description:
+    "Centro de Diagnóstico Automotor autorizado para revisión técnico mecánica de motos en el sur de Bogotá",
+  url: new URL("#kennedy", Astro.url).toString(),
+  logo: new URL("/favicon.webp", Astro.url).toString(),
+  image: new URL("/favicon.webp", Astro.url).toString(),
+  telephone: "+573144692424",
+  priceRange: "$209.000 - $209.600",
+  currenciesAccepted: "COP",
+  paymentAccepted: "Efectivo, tarjeta de crédito, tarjeta débito",
+  openingHours: "Mo-Sa 07:00-19:00, Su,PH 09:00-14:00",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Av. Cra 80 #41B - 28 Sur",
+    addressLocality: "Bogotá",
+    addressRegion: "DC",
+    addressCountry: "CO",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "4.623191",
+    longitude: "-74.164422",
+  },
+  hasMap: "https://maps.google.com/?q=CDA+Tu+Revisión+Corabastos",
+};
+
+// Keywords para SEO
+const keywords =
+  "CDA Suba, CDA Kennedy, sedes CDA, revisión técnico mecánica Bogotá, CDA Tu Revisión, Suba Tabor, Corabastos, centros de diagnóstico automotor";
 ---
 
-<Layout
-  title="Nuestras Sedes | CDA Tu Revisión"
-  description="Conoce nuestras sedes estratégicamente ubicadas en Bogotá para brindarte el mejor servicio de revisión técnico mecánica para motos"
->
+<Layout title={pageTitle} description={pageDescription} image={pageImage}>
+  <!-- Schema.org JSON-LD para SEO - Ambas sedes -->
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify([schemaSuba, schemaKennedy])}
+  />
+
+  <!-- Metadatos adicionales para SEO -->
+  <meta name="keywords" content={keywords} slot="head" />
+  <meta name="robots" content="index, follow" slot="head" />
+  <meta name="author" content="CDA Tu Revisión" slot="head" />
+  <meta name="geo.placename" content="Bogotá, Colombia" slot="head" />
+  <meta name="geo.region" content="CO-DC" slot="head" />
+  <meta name="geo.position" content="4.734058;-74.096940" slot="head" />
+  <meta name="ICBM" content="4.734058, -74.096940" slot="head" />
   <main
     style="min-height:60vh; text-align:center; position:relative; width:100%; overflow-x:hidden; margin:0 auto; padding:0; box-sizing:border-box;"
   >

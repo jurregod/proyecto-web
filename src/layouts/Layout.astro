@@ -11,7 +11,7 @@ interface Props {
 
 const {
   title = "Revisión tecnomecánica en Bogotá | CDA Tu Revisión",
-  description = "Centro de diagnóstico automotor especializado en revisión técnico mecánica para motos en Bogotá. Servicio rápido, confiable y a precios competitivos.",
+  description = "CDA Tu Revisión Suba Tabor | CDA Tu Revisión Corabastos | Revisión Técnico Mecánica para Motocicletas 2T y 4T | Suba | Kennedy | Bogotá",
   image = imgRTM.src,
 } = Astro.props;
 ---
@@ -53,6 +53,9 @@ const {
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Slot para metadatos adicionales específicos de cada página -->
+    <slot name="head" />
   </head>
   <body>
     <Header />

@@ -1,8 +1,47 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+// Metadatos específicos para la página de blog
+const pageTitle = "Blog | CDA Tu Revisión - Noticias y Consejos";
+const pageDescription =
+  "Noticias, consejos y artículos sobre revisión técnico mecánica para motos, normativas vigentes y mantenimiento preventivo de tu vehículo.";
+const pageImage = "/favicon.webp";
+
+// Datos estructurados para SEO (schema.org)
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Blog CDA Tu Revisión",
+  description:
+    "Artículos informativos sobre revisión técnico mecánica y normativa para motocicletas",
+  url: Astro.url.toString(),
+  publisher: {
+    "@type": "Organization",
+    name: "CDA Tu Revisión",
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/favicon.webp", Astro.url).toString(),
+    },
+  },
+};
+
+// Keywords para SEO
+const keywords =
+  "blog CDA, artículos revisión técnico mecánica, consejos motos, RTM, normativa motos Colombia, mantenimiento preventivo motocicletas";
 ---
 
-<Layout>
+<Layout title={pageTitle} description={pageDescription} image={pageImage}>
+  <!-- Schema.org JSON-LD para SEO -->
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(schemaData)}
+  />
+
+  <!-- Metadatos adicionales para SEO -->
+  <meta name="keywords" content={keywords} slot="head" />
+  <meta name="robots" content="index, follow" slot="head" />
+  <meta name="author" content="CDA Tu Revisión" slot="head" />
   <main style="padding:2rem; min-height:60vh; text-align:center;">
     <h2>Blog</h2>
     <p>Lee nuestras últimas noticias y artículos.</p>

@@ -3,9 +3,75 @@ import Layout from "../layouts/Layout.astro";
 import imgRTM from "../assets/img-rtm.webp";
 import imgCertificado from "../assets/img-certificado.webp";
 import logoSoat from "../assets/logo-soat.webp";
+
+// Metadatos específicos para la página de servicios
+const pageTitle = "Servicios | Revisión tecnomecánica para motos en Bogotá";
+const pageDescription =
+  "CDA Tu Revisión | Tecnomecánica para motos | SOAT | Peritaje | Descarga tu Certificado RTM | Suba | Corabastos | Kennedy | Bogotá";
+const pageImage = imgRTM.src;
+
+// Datos estructurados para SEO (schema.org)
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Revisión Técnico Mecánica para Motos",
+  serviceType: "Diagnóstico Automotor",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "CDA Tu Revisión",
+    image: new URL(pageImage, Astro.url).toString(),
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Av. Calle 132 #98C-33",
+      addressLocality: "Bogotá",
+      addressRegion: "DC",
+      addressCountry: "CO",
+    },
+    telephone: "+573205680589",
+    priceRange: "$209.000 - $209.600",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Bogotá",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicios de Revisión Técnico Mecánica",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        name: "Revisión Técnico Mecánica para Motos",
+        price: "209.000",
+        priceCurrency: "COP",
+      },
+      {
+        "@type": "Offer",
+        name: "Certificado RTM",
+        description: "Descarga de certificado de revisión técnico mecánica",
+      },
+    ],
+  },
+};
+
+// Keywords para SEO
+const keywords =
+  "servicio RTM, revisión técnico mecánica motos, certificado RTM, centro diagnóstico automotor, CDA, Bogotá, Suba, Kennedy";
 ---
 
-<Layout title="Servicios | CDA Tu Revisión">
+<Layout title={pageTitle} description={pageDescription} image={pageImage}>
+  <!-- Schema.org JSON-LD para SEO -->
+  <script
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(schemaData)}
+  />
+
+  <!-- Metadatos adicionales para SEO -->
+  <meta name="keywords" content={keywords} slot="head" />
+  <meta name="robots" content="index, follow" slot="head" />
+  <meta name="author" content="CDA Tu Revisión" slot="head" />
+  <meta name="geo.placename" content="Bogotá, Colombia" slot="head" />
+  <meta name="geo.region" content="CO-DC" slot="head" />
   <main>
     <div class="titulo-principal-contenedor">
       <h1 class="titulo-principal">
