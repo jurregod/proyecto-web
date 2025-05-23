@@ -2,9 +2,212 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
-  <main style="padding:2rem; min-height:60vh; text-align:center;">
-    <h2>Sedes</h2>
-    <p>Descubre nuestras sedes y ubicaciones.</p>
+<Layout
+  title="Nuestras Sedes | CDA Tu Revisión"
+  description="Conoce nuestras sedes estratégicamente ubicadas en Bogotá para brindarte el mejor servicio de revisión técnico mecánica para motos"
+>
+  <main
+    style="min-height:60vh; text-align:center; position:relative; width:100%; overflow-x:hidden;"
+  >
+    <div style="height:40px;"></div>
+
+    <!-- SECCIÓN SEDES -->
+    <div
+      id="contenedor-sedes"
+      style="width:100%; max-width:1200px; margin:0 auto; min-height:120px; padding:0 1.5rem;"
+    >
+      <h1
+        style="color:#51c51b; font-size:2.8rem; margin-bottom:1.2rem; margin-top:0.5rem; font-weight:bold; padding:0 0.5rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1);"
+      >
+        Nuestras Sedes en Bogotá
+      </h1>
+
+      <p
+        style="text-align:center; color:#333; max-width:800px; margin:0 auto 1rem; line-height:1.6; font-size:1.2rem; padding:0 1rem;"
+      >
+        Contamos con dos centros de diagnóstico automotor estratégicamente
+        ubicados en Bogotá para brindarte un servicio ágil y cercano.
+      </p>
+
+      <p
+        style="text-align:center; color:#444; max-width:800px; margin:0 auto 2.5rem; line-height:1.6; font-size:1.1rem; padding:0 1rem;"
+      >
+        Nuestras sedes están completamente equipadas con tecnología de última
+        generación para realizar revisiones técnico mecánicas de motos de manera
+        rápida y confiable. Visítanos en la sede más cercana a tu ubicación y
+        experimenta nuestro servicio de calidad.
+      </p>
+
+      <style>
+        .sedes-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 3rem;
+          margin-bottom: 4rem;
+          padding: 0 1rem;
+        }
+        .sede-item {
+          width: 100%;
+          max-width: 800px;
+          box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+          border-radius: 16px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+          position: relative;
+        }
+        .sede-item:hover {
+          transform: translateY(-5px);
+        }
+        .sede-header {
+          background: #51c51b;
+          color: white;
+          padding: 1.2rem;
+          font-size: 1.8rem;
+          font-weight: bold;
+          text-align: center;
+          border-bottom: 4px solid #fecc06;
+        }
+        .sede-map-container {
+          position: relative;
+          width: 100%;
+          padding-bottom: 50%; /* Proporción de aspecto más panorámica 2:1 */
+          height: 0;
+          overflow: hidden;
+        }
+        .sede-map {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+        .sede-address {
+          padding: 1.2rem 1rem;
+          background: #f9f9f9;
+          color: #333;
+          text-align: center;
+          border-top: 4px solid #fecc06;
+        }
+        .sede-address p {
+          margin: 0.3rem 0;
+          line-height: 1.5;
+        }
+        .sede-address p:first-child {
+          color: #51c51b;
+          font-size: 1.2rem;
+          margin-bottom: 0.6rem;
+        }
+        .sede-address p strong {
+          color: #51c51b;
+        }
+        .sede-button {
+          display: inline-block;
+          background: #51c51b;
+          color: white;
+          padding: 0.8rem 2rem;
+          border-radius: 6px;
+          text-decoration: none;
+          font-weight: bold;
+          font-size: 1.1rem;
+          margin-top: 1.2rem;
+          margin-bottom: 0.5rem;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+          transition:
+            transform 0.2s ease,
+            background-color 0.2s ease;
+        }
+        .sede-button:hover {
+          background: #48b118;
+          transform: translateY(-3px);
+          box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        }
+      </style>
+
+      <div class="sedes-container">
+        <div class="sede-item" id="suba">
+          <div class="sede-header">CDA Tu Revisión Suba Tabor</div>
+          <div class="sede-map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7952.414146270389!2d-74.09694012072288!3d4.734058000000014!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f8523c1d7eeb3%3A0xb23c370281261ccc!2sCDA%20Tu%20Revisi%C3%B3n%20Suba%20Tabor!5e0!3m2!1ses-419!2sco!4v1718733277241!5m2!1ses-419!2sco"
+              class="sede-map"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+          <div class="sede-address">
+            <p><strong>Sede Norte - Suba</strong></p>
+            <p>Av. Calle 132 #98C - 33, Bogotá</p>
+            <p>📱 Teléfono: 320 568 0589</p>
+            <p>⏰ Horario: Lunes a Sábado 7:00 AM - 7:00 PM</p>
+            <p>⏰ Domingos y Festivos: 9:00 AM - 2:00 PM</p>
+            <p>🅿️ Parqueadero disponible para clientes</p>
+            <p>🚗 Fácil acceso desde Av. Suba y Av. Cali</p>
+            <a
+              href="https://maps.google.com/?q=CDA+Tu+Revisión+Suba+Tabor"
+              target="_blank"
+              class="sede-button">Abrir en Google Maps</a
+            >
+          </div>
+        </div>
+
+        <div class="sede-item" id="kennedy">
+          <div class="sede-header">CDA Tu Revisión Corabastos</div>
+          <div class="sede-map-container">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7953.673578338969!2d-74.16442252072288!3d4.623191199999985!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9f1d05f3574b%3A0x95b19d56adf0b9a1!2sCDA%20Tu%20Revisi%C3%B3n%20Corabastos!5e0!3m2!1ses-419!2sco!4v1718733353991!5m2!1ses-419!2sco"
+              class="sede-map"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+          <div class="sede-address">
+            <p><strong>Sede Sur - Kennedy</strong></p>
+            <p>Av. Cra 80 #41B - 28 Sur, Bogotá</p>
+            <p>📱 Teléfono: 314 469 2424</p>
+            <p>⏰ Horario: Lunes a Sábado 7:00 AM - 7:00 PM</p>
+            <p>⏰ Domingos y Festivos: 9:00 AM - 2:00 PM</p>
+            <p>🅿️ Parqueadero gratuito para clientes</p>
+            <p>
+              🚗 Cerca a Corabastos y Centro Comercial Plaza de las Américas
+            </p>
+            <a
+              href="https://maps.google.com/?q=CDA+Tu+Revisión+Corabastos"
+              target="_blank"
+              class="sede-button">Abrir en Google Maps</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Información adicional sobre las sedes -->
+      <div
+        style="max-width:800px; margin:0 auto 3rem; padding:0 1rem; text-align:left;"
+      >
+        <h2 style="color:#51c51b; font-size:1.8rem; margin-bottom:1rem;">
+          Información importante
+        </h2>
+        <ul style="line-height:1.6; margin-left:1.5rem; color:#333;">
+          <li>
+            No se requiere cita previa, pero puedes contactarnos para reservar
+            tu turno.
+          </li>
+          <li>El tiempo aproximado del servicio es de 40 minutos.</li>
+          <li>
+            Ambas sedes cuentan con sala de espera, Wi-Fi gratuito y servicio de
+            cafetería.
+          </li>
+          <li>
+            Aceptamos todos los métodos de pago: efectivo, tarjetas débito,
+            crédito y transferencias.
+          </li>
+        </ul>
+      </div>
+    </div>
   </main>
 </Layout>

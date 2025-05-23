@@ -7,15 +7,17 @@ import imgCertificado from "../assets/img-certificado.webp";
 ---
 
 <Layout>
-  <main style="padding:0 2rem 2rem 2rem; min-height:60vh; text-align:center;">
+  <main
+    style="min-height:60vh; text-align:center; position:relative; width:100%; overflow-x:hidden;"
+  >
     <!-- 1. PORTADA PRINCIPAL -->
     <section
-      style="position:relative; width:100vw; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; overflow:hidden; height:580px;"
+      style="position:relative; width:100vw; margin-left:calc(-50vw + 50%); margin-right:calc(-50vw + 50%); overflow:hidden; height:auto; min-height:400px; max-height:580px;"
     >
       <Image
         src={portadaIndex}
         alt="Portada CDA"
-        style="width:100vw; height:540px; object-fit:cover; border-top:8px solid #fecc06; border-bottom:8px solid #fecc06; border-left:none; border-right:none; border-radius:0; display:block; margin:0 auto;"
+        style="width:100%; height:auto; min-height:400px; max-height:540px; object-fit:cover; border-top:8px solid #fecc06; border-bottom:8px solid #fecc06; border-left:none; border-right:none; border-radius:0; display:block; margin:0 auto;"
         width={1920}
         height={540}
         format="webp"
@@ -23,21 +25,21 @@ import imgCertificado from "../assets/img-certificado.webp";
         loading="eager"
       />
       <div
-        style="position:absolute; top:0; left:0; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff;"
+        style="position:absolute; top:0; left:0; width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; color:#fff; padding:2rem; text-align:center;"
       >
         <h1
-          style="margin:0; font-size:4.5rem; text-shadow:0 2px 8px #000; color:#51c51b;"
+          style="margin:0; font-size:4.5rem; text-shadow:0 2px 8px #000; color:#51c51b; line-height:1.2; width:100%;"
         >
           CDA TU REVISION
         </h1>
         <h2
-          style="margin:1em 0 1.5rem; font-size:2.1rem; text-shadow:0 2px 8px #000;"
+          style="margin:0.5em 0 1.2rem; font-size:2.1rem; text-shadow:0 2px 8px #000; line-height:1.3; max-width:95%; width:100%;"
         >
           Revisión técnico mecánica para motos
         </h2>
         <a
           href="/contacto"
-          style="display:inline-block; background:#51c51b; color:#fff; padding:0.75rem 2rem; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.1rem; box-shadow:0 2px 8px #0003; margin-top:1rem;"
+          style="display:inline-block; background:#51c51b; color:#fff; padding:0.75rem 2rem; border-radius:6px; text-decoration:none; font-weight:bold; font-size:1.1rem; box-shadow:0 2px 8px rgba(0, 0, 0, 0.2); margin-top:1rem; transition: transform 0.2s ease, background-color 0.2s ease;"
           >Contáctanos</a
         >
       </div>
@@ -46,58 +48,12 @@ import imgCertificado from "../assets/img-certificado.webp";
     <div style="height:20px;"></div>
     <!-- 3. SECCIÓN SERVICIOS -->
     <section
-      style="position:relative; width:100vw; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; background:#51c51b; padding:3rem 0; display:flex; flex-direction:row; justify-content:center; align-items:center; gap:2rem; box-shadow:0 2px 12px #0001; flex-wrap:wrap;"
+      style="position:relative; width:100vw; margin-left:calc(-50vw + 50%); margin-right:calc(-50vw + 50%); background:#51c51b; padding:3rem 0; display:flex; flex-direction:row; justify-content:center; align-items:center; gap:2rem; box-shadow:0 2px 12px #0001; flex-wrap:wrap;"
     >
-      <style>
-        @media (max-width: 800px) {
-          .servicio-rect {
-            width: 90vw !important;
-            max-width: 400px;
-            height: auto !important;
-            margin-bottom: 1.5rem;
-          }
-          .servicio-rect:first-child {
-            border-radius: 16px 16px 0 0 !important;
-          }
-          .servicio-rect:last-child {
-            border-radius: 0 0 16px 16px !important;
-          }
-          .servicios-flex {
-            flex-direction: column !important;
-            align-items: center !important;
-          }
-        }
-
-        .bg-rtm {
-          background-image: linear-gradient(
-              rgba(0, 0, 0, 0.45),
-              rgba(0, 0, 0, 0.45)
-            ),
-            url("{imgRTMUrl}");
-          background-position: center;
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-color: #fff;
-        }
-
-        .bg-certificado {
-          background-image: linear-gradient(
-              rgba(0, 0, 0, 0.45),
-              rgba(0, 0, 0, 0.45)
-            ),
-            url("{imgCertificadoUrl}");
-          background-position: center;
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-color: #fff;
-        }
-      </style>
       <div
-        class="servicios-flex"
         style="display:flex; flex-direction:row; justify-content:center; align-items:center; gap:2rem; width:100%; flex-wrap:wrap;"
       >
         <div
-          class="servicio-rect"
           style={`background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('${imgRTM.src}'); background-position: center; background-size: cover; background-repeat: no-repeat; background-color: #fff; border-radius:16px 0 0 16px; box-shadow:0 6px 24px #0006; width:540px; height:320px; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;`}
         >
           <h3
@@ -112,7 +68,6 @@ import imgCertificado from "../assets/img-certificado.webp";
           >
         </div>
         <div
-          class="servicio-rect"
           style={`background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('${imgCertificado.src}'); background-position: center; background-size: cover; background-repeat: no-repeat; background-color: #fff; border-radius:0 16px 16px 0; box-shadow:0 6px 24px #0006; width:540px; height:320px; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; overflow:hidden;`}
         >
           <h3
@@ -133,10 +88,10 @@ import imgCertificado from "../assets/img-certificado.webp";
     <!-- 5. SECCIÓN TARIFAS -->
     <div
       id="contenedor-tercera-seccion"
-      style="width:100%; max-width:1200px; margin:0 auto; min-height:120px;"
+      style="width:100%; max-width:1200px; margin:0 auto; min-height:120px; padding:0 2rem;"
     >
       <h2
-        style="color:#51c51b; font-size:2.2rem; margin-bottom:1.2rem; margin-top:0.5rem; font-weight:bold;"
+        style="color:#51c51b; font-size:2.2rem; margin-bottom:1.2rem; margin-top:0.5rem; font-weight:bold; padding:0 0.5rem;"
       >
         Tarifas 2025 para tu Revisión Técnico Mecánica
       </h2>
@@ -178,38 +133,6 @@ import imgCertificado from "../assets/img-certificado.webp";
         .tarifa-card {
           display: none;
         }
-
-        @media (max-width: 768px) {
-          .tarifas-table {
-            display: none;
-          }
-          .tarifa-card {
-            display: block;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin: 1rem auto;
-            padding: 1rem;
-            max-width: 90%;
-            border-left: 5px solid #51c51b;
-          }
-          .tarifa-card-header {
-            background: #51c51b;
-            color: #fff;
-            padding: 0.8rem;
-            border-radius: 6px;
-            margin-bottom: 0.8rem;
-            font-weight: bold;
-            text-align: center;
-          }
-          .tarifa-card-valor {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-            padding: 0.8rem 0;
-          }
-        }
       </style>
 
       <div class="tarifas-container">
@@ -231,37 +154,17 @@ import imgCertificado from "../assets/img-certificado.webp";
             </tr>
           </tbody>
         </table>
-
-        <!-- Tarjetas para móviles -->
-        <div class="tarifa-card">
-          <div class="tarifa-card-header">Modelos ➜2025 a 2023</div>
-          <div class="tarifa-card-valor">$209.000</div>
-        </div>
-
-        <div class="tarifa-card">
-          <div class="tarifa-card-header">Modelos ➜2022 a 2018</div>
-          <div class="tarifa-card-valor">$209.300</div>
-        </div>
-
-        <div class="tarifa-card">
-          <div class="tarifa-card-header">Modelos ➜2017 a 2009</div>
-          <div class="tarifa-card-valor">$209.600</div>
-        </div>
-
-        <div class="tarifa-card">
-          <div class="tarifa-card-header">Modelos ➜2008 > Atrás</div>
-          <div class="tarifa-card-valor">$209.300</div>
-        </div>
       </div>
 
       <p
-        style="font-style:italic; color:#666; margin-top:0.5rem; margin-bottom:1.5rem; font-size:0.9rem;"
+        style="font-style:italic; color:#666; margin-top:0.5rem; margin-bottom:1.5rem; font-size:0.9rem; padding:0 1rem;"
       >
         *Los valores fijados anteriormente fueron aproximados a pesos cerrados*
       </p>
 
       <!-- Línea divisora amarilla -->
       <div
+        class="linea-divisora"
         style="width:100%; max-width:900px; height:6px; background-color:#fecc06; margin:0 auto 3rem; border-radius:3px; box-shadow:0 2px 6px rgba(0,0,0,0.1);"
       >
       </div>
@@ -270,16 +173,16 @@ import imgCertificado from "../assets/img-certificado.webp";
     <!-- 6. SECCIÓN SEDES -->
     <div
       id="contenedor-sedes"
-      style="width:100%; max-width:1200px; margin:0 auto; min-height:120px; padding:0 1rem;"
+      style="width:100%; max-width:1200px; margin:0 auto; min-height:120px; padding:0 1.5rem;"
     >
       <h2
-        style="color:#51c51b; font-size:2.2rem; margin-bottom:1rem; margin-top:0.5rem; font-weight:bold;"
+        style="color:#51c51b; font-size:2.2rem; margin-bottom:1rem; margin-top:0.5rem; font-weight:bold; padding:0 0.5rem;"
       >
         Nuestras Sedes
       </h2>
 
       <p
-        style="text-align:center; color:#333; max-width:800px; margin:0 auto 2rem; line-height:1.5;"
+        style="text-align:center; color:#333; max-width:800px; margin:0 auto 2rem; line-height:1.5; font-size:1.1rem; padding:0 1rem;"
       >
         Contamos con dos centros de diagnóstico automotor estratégicamente
         ubicados en Bogotá para brindarte un servicio ágil y cercano. Ambas
@@ -294,11 +197,12 @@ import imgCertificado from "../assets/img-certificado.webp";
           justify-content: center;
           gap: 2rem;
           margin-bottom: 4rem;
+          padding: 0 1rem;
         }
         .sede-item {
           flex: 1;
           min-width: 300px;
-          max-width: 650px;
+          max-width: 550px;
           box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
           border-radius: 16px;
           overflow: hidden;
@@ -368,14 +272,6 @@ import imgCertificado from "../assets/img-certificado.webp";
           background: #48b118;
           transform: translateY(-2px);
         }
-        @media (max-width: 768px) {
-          .sede-item {
-            min-width: 90%;
-          }
-          .sede-map-container {
-            padding-bottom: 65%; /* Proporción de aspecto ligeramente diferente para móviles */
-          }
-        }
       </style>
 
       <div class="sedes-container">
@@ -429,7 +325,8 @@ import imgCertificado from "../assets/img-certificado.webp";
 
       <!-- Línea divisora amarilla -->
       <div
-        style="width:100%; max-width:900px; height:6px; background-color:#fecc06; margin:0 auto 1.5rem; border-radius:3px; box-shadow:0 2px 6px rgba(0,0,0,0.1);"
+        class="linea-divisora"
+        style="width:95%; max-width:900px; height:6px; background-color:#fecc06; margin:0 auto 1.5rem; border-radius:3px; box-shadow:0 2px 6px rgba(0,0,0,0.1);"
       >
       </div>
     </div>
@@ -437,10 +334,10 @@ import imgCertificado from "../assets/img-certificado.webp";
     <!-- 7. SECCIÓN EXPERIENCIA -->
     <div
       id="contenedor-experiencia"
-      style="width:100%; max-width:1200px; margin:1rem auto 1.5rem; padding:0.5rem 0; text-align:center;"
+      style="width:100%; max-width:1200px; margin:1rem auto 1.5rem; padding:0.5rem 2rem; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;"
     >
       <p
-        style="font-size:2.4rem; color:#333; margin-bottom:0.5rem; font-weight:bold;"
+        style="font-size:2.4rem; color:#333; margin-bottom:0.5rem; font-weight:bold; padding:0 1rem; width:100%;"
       >
         Nuestra experiencia
       </p>
@@ -451,7 +348,7 @@ import imgCertificado from "../assets/img-certificado.webp";
         0
       </div>
       <p
-        style="font-size:1.5rem; color:#333; max-width:800px; margin:0 auto; line-height:1.3;"
+        style="font-size:1.5rem; color:#333; max-width:90%; margin:0 auto; line-height:1.3; padding:0 1rem; text-align:center;"
       >
         Usuarios satisfechos con la calidad de nuestros servicios
       </p>
@@ -462,8 +359,8 @@ import imgCertificado from "../assets/img-certificado.webp";
       document.addEventListener("DOMContentLoaded", () => {
         const contadorEl = document.getElementById("contador");
         const valorFinal = 38560;
-        const duracion = 6000; // duración en milisegundos (aumentada a 6 segundos)
-        const pasos = 200; // más pasos para una animación más suave
+        const duracion = 6000; // duración en milisegundos (6 segundos)
+        const pasos = 200; // pasos para una animación suave
         let valorActual = 0;
 
         // Función para formatear el número con separadores de miles
@@ -476,7 +373,6 @@ import imgCertificado from "../assets/img-certificado.webp";
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                // Función de animación
                 const incremento = Math.ceil(valorFinal / pasos);
                 const intervalo = duracion / pasos;
 
