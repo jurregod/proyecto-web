@@ -65,9 +65,11 @@ import Layout from "../layouts/Layout.astro";
           background: #51c51b;
           color: white;
           padding: 1rem;
-          font-size: 1.5rem;
+          font-size: 1.6rem;
           font-weight: bold;
           text-align: center;
+          text-transform: uppercase;
+          letter-spacing: 1px;
           border-bottom: 4px solid #fecc06;
         }
         .sede-map-container {
@@ -134,8 +136,9 @@ import Layout from "../layouts/Layout.astro";
         /* Media queries para hacerlo responsive */
         @media (max-width: 768px) {
           .sede-header {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             padding: 0.8rem 0.5rem;
+            letter-spacing: 0.8px;
           }
           .sede-address p {
             font-size: 0.95rem;
@@ -160,8 +163,9 @@ import Layout from "../layouts/Layout.astro";
         /* Para móviles pequeños */
         @media (max-width: 480px) {
           .sede-header {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             padding: 0.7rem 0.4rem;
+            letter-spacing: 0.5px;
           }
           .sede-address p {
             font-size: 0.9rem;
@@ -192,7 +196,8 @@ import Layout from "../layouts/Layout.astro";
             <p>
               📱 Teléfono: <a
                 href="tel:+573205680589"
-                style="color:#51c51b; text-decoration:none;">320 568 0589</a>
+                style="color:#51c51b; text-decoration:none;">320 568 0589</a
+              >
             </p>
             <p>⏰ Horario: Lunes a Sábado 7:00 AM - 7:00 PM</p>
             <p>⏰ Domingos y Festivos: 9:00 AM - 2:00 PM</p>
@@ -224,7 +229,8 @@ import Layout from "../layouts/Layout.astro";
             <p>
               📱 Teléfono: <a
                 href="tel:+573144692424"
-                style="color:#51c51b; text-decoration:none;">314 469 2424</a>
+                style="color:#51c51b; text-decoration:none;">314 469 2424</a
+              >
             </p>
             <p>⏰ Horario: Lunes a Sábado 7:00 AM - 7:00 PM</p>
             <p>⏰ Domingos y Festivos: 9:00 AM - 2:00 PM</p>
