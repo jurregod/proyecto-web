@@ -7,30 +7,30 @@ import Layout from "../layouts/Layout.astro";
   description="Conoce nuestras sedes estratégicamente ubicadas en Bogotá para brindarte el mejor servicio de revisión técnico mecánica para motos"
 >
   <main
-    style="min-height:60vh; text-align:center; position:relative; width:100%; overflow-x:hidden;"
+    style="min-height:60vh; text-align:center; position:relative; width:100%; overflow-x:hidden; margin:0 auto; padding:0; box-sizing:border-box;"
   >
-    <div style="height:40px;"></div>
+    <div style="height:10px;"></div>
 
     <!-- SECCIÓN SEDES -->
     <div
       id="contenedor-sedes"
-      style="width:100%; max-width:1200px; margin:0 auto; min-height:120px; padding:0 1.5rem;"
+      style="width:100%; max-width:1200px; margin:0 auto; min-height:120px; padding:0.5rem; box-sizing:border-box;"
     >
       <h1
-        style="color:#51c51b; font-size:2.8rem; margin-bottom:1.2rem; margin-top:0.5rem; font-weight:bold; padding:0 0.5rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1);"
+        style="color:#51c51b; font-size:clamp(2rem, 5vw, 2.8rem); margin-bottom:1rem; margin-top:0.5rem; font-weight:bold; padding:0 0.5rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1);"
       >
         Nuestras Sedes en Bogotá
       </h1>
 
       <p
-        style="text-align:center; color:#333; max-width:800px; margin:0 auto 1rem; line-height:1.6; font-size:1.2rem; padding:0 1rem;"
+        style="text-align:center; color:#333; max-width:800px; margin:0 auto 1rem; line-height:1.6; font-size:clamp(1rem, 4vw, 1.2rem); padding:0 0.5rem;"
       >
         Contamos con dos centros de diagnóstico automotor estratégicamente
         ubicados en Bogotá para brindarte un servicio ágil y cercano.
       </p>
 
       <p
-        style="text-align:center; color:#444; max-width:800px; margin:0 auto 2.5rem; line-height:1.6; font-size:1.1rem; padding:0 1rem;"
+        style="text-align:center; color:#444; max-width:800px; margin:0 auto 2rem; line-height:1.6; font-size:clamp(0.95rem, 3.5vw, 1.1rem); padding:0 0.5rem;"
       >
         Nuestras sedes están completamente equipadas con tecnología de última
         generación para realizar revisiones técnico mecánicas de motos de manera
@@ -43,9 +43,10 @@ import Layout from "../layouts/Layout.astro";
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 3rem;
-          margin-bottom: 4rem;
-          padding: 0 1rem;
+          gap: 2.5rem;
+          margin-bottom: 3rem;
+          padding: 0;
+          width: 100%;
         }
         .sede-item {
           width: 100%;
@@ -55,6 +56,7 @@ import Layout from "../layouts/Layout.astro";
           overflow: hidden;
           transition: transform 0.3s ease;
           position: relative;
+          margin: 0 auto;
         }
         .sede-item:hover {
           transform: translateY(-5px);
@@ -62,8 +64,8 @@ import Layout from "../layouts/Layout.astro";
         .sede-header {
           background: #51c51b;
           color: white;
-          padding: 1.2rem;
-          font-size: 1.8rem;
+          padding: 1rem;
+          font-size: 1.5rem;
           font-weight: bold;
           text-align: center;
           border-bottom: 4px solid #fecc06;
@@ -71,9 +73,10 @@ import Layout from "../layouts/Layout.astro";
         .sede-map-container {
           position: relative;
           width: 100%;
-          padding-bottom: 50%; /* Proporción de aspecto más panorámica 2:1 */
+          padding-bottom: 70%; /* Proporción ajustada para mejor visualización en móvil */
           height: 0;
           overflow: hidden;
+          max-height: 450px;
         }
         .sede-map {
           position: absolute;
@@ -84,15 +87,17 @@ import Layout from "../layouts/Layout.astro";
           border: none;
         }
         .sede-address {
-          padding: 1.2rem 1rem;
+          padding: 1.2rem 0.5rem;
           background: #f9f9f9;
           color: #333;
           text-align: center;
           border-top: 4px solid #fecc06;
         }
         .sede-address p {
-          margin: 0.3rem 0;
+          margin: 0.3rem auto;
           line-height: 1.5;
+          max-width: 95%;
+          overflow-wrap: break-word;
         }
         .sede-address p:first-child {
           color: #51c51b;
@@ -106,22 +111,65 @@ import Layout from "../layouts/Layout.astro";
           display: inline-block;
           background: #51c51b;
           color: white;
-          padding: 0.8rem 2rem;
-          border-radius: 6px;
+          padding: 0.8rem 1.5rem;
+          border-radius: 30px;
           text-decoration: none;
           font-weight: bold;
           font-size: 1.1rem;
-          margin-top: 1.2rem;
-          margin-bottom: 0.5rem;
+          margin: 1.2rem auto 0.8rem;
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
           transition:
             transform 0.2s ease,
             background-color 0.2s ease;
+          width: 90%;
+          max-width: 260px;
         }
-        .sede-button:hover {
+        .sede-button:hover,
+        .sede-button:active {
           background: #48b118;
           transform: translateY(-3px);
           box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Media queries para hacerlo responsive */
+        @media (max-width: 768px) {
+          .sede-header {
+            font-size: 1.3rem;
+            padding: 0.8rem 0.5rem;
+          }
+          .sede-address p {
+            font-size: 0.95rem;
+            max-width: 100%;
+            word-wrap: break-word;
+            padding: 0 0.5rem;
+          }
+          .sede-button {
+            padding: 0.7rem 1.3rem;
+            font-size: 1rem;
+            width: 85%;
+          }
+          .sede-item {
+            margin: 0 auto;
+            width: 95%;
+          }
+          .sede-map-container {
+            padding-bottom: 80%; /* Aun más alto en móviles muy pequeños */
+          }
+        }
+
+        /* Para móviles pequeños */
+        @media (max-width: 480px) {
+          .sede-header {
+            font-size: 1.2rem;
+            padding: 0.7rem 0.4rem;
+          }
+          .sede-address p {
+            font-size: 0.9rem;
+          }
+          .sede-button {
+            width: 90%;
+            font-size: 0.95rem;
+          }
         }
       </style>
 
@@ -141,7 +189,11 @@ import Layout from "../layouts/Layout.astro";
           <div class="sede-address">
             <p><strong>Sede Norte - Suba</strong></p>
             <p>Av. Calle 132 #98C - 33, Bogotá</p>
-            <p>📱 Teléfono: 320 568 0589</p>
+            <p>
+              📱 Teléfono: <a
+                href="tel:+573205680589"
+                style="color:#51c51b; text-decoration:none;">320 568 0589</a>
+            </p>
             <p>⏰ Horario: Lunes a Sábado 7:00 AM - 7:00 PM</p>
             <p>⏰ Domingos y Festivos: 9:00 AM - 2:00 PM</p>
             <p>🅿️ Parqueadero disponible para clientes</p>
@@ -169,13 +221,15 @@ import Layout from "../layouts/Layout.astro";
           <div class="sede-address">
             <p><strong>Sede Sur - Kennedy</strong></p>
             <p>Av. Cra 80 #41B - 28 Sur, Bogotá</p>
-            <p>📱 Teléfono: 314 469 2424</p>
+            <p>
+              📱 Teléfono: <a
+                href="tel:+573144692424"
+                style="color:#51c51b; text-decoration:none;">314 469 2424</a>
+            </p>
             <p>⏰ Horario: Lunes a Sábado 7:00 AM - 7:00 PM</p>
             <p>⏰ Domingos y Festivos: 9:00 AM - 2:00 PM</p>
             <p>🅿️ Parqueadero gratuito para clientes</p>
-            <p>
-              🚗 Cerca a Corabastos y Centro Comercial Plaza de las Américas
-            </p>
+            <p>🚗 Cerca a Corabastos y Plaza de las Américas</p>
             <a
               href="https://maps.google.com/?q=CDA+Tu+Revisión+Corabastos"
               target="_blank"
@@ -187,22 +241,28 @@ import Layout from "../layouts/Layout.astro";
 
       <!-- Información adicional sobre las sedes -->
       <div
-        style="max-width:800px; margin:0 auto 3rem; padding:0 1rem; text-align:left;"
+        style="max-width:800px; margin:0.5rem auto 3rem; padding:0.8rem; text-align:left; background-color:#f9f9f9; border-radius:12px; box-shadow:0 3px 15px rgba(0,0,0,0.05); width:95%; box-sizing:border-box;"
       >
-        <h2 style="color:#51c51b; font-size:1.8rem; margin-bottom:1rem;">
+        <h2
+          style="color:#51c51b; font-size:clamp(1.3rem, 5vw, 1.8rem); margin-bottom:1rem; padding-top:1rem; text-align:center;"
+        >
           Información importante
         </h2>
-        <ul style="line-height:1.6; margin-left:1.5rem; color:#333;">
-          <li>
+        <ul
+          style="line-height:1.6; margin-left:0.5rem; padding-left:0.5rem; padding-right:0.5rem; padding-bottom:1rem; color:#333; font-size:clamp(0.9rem, 4vw, 1rem); list-style-position:inside;"
+        >
+          <li style="margin-bottom:0.8rem; padding-right:0.5rem;">
             No se requiere cita previa, pero puedes contactarnos para reservar
             tu turno.
           </li>
-          <li>El tiempo aproximado del servicio es de 40 minutos.</li>
-          <li>
+          <li style="margin-bottom:0.8rem; padding-right:0.5rem;">
+            El tiempo aproximado del servicio es de 40 minutos.
+          </li>
+          <li style="margin-bottom:0.8rem; padding-right:0.5rem;">
             Ambas sedes cuentan con sala de espera, Wi-Fi gratuito y servicio de
             cafetería.
           </li>
-          <li>
+          <li style="margin-bottom:0.5rem; padding-right:0.5rem;">
             Aceptamos todos los métodos de pago: efectivo, tarjetas débito,
             crédito y transferencias.
           </li>
