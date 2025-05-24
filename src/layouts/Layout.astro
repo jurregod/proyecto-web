@@ -1,19 +1,27 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
 import imgRTM from "../assets/img-rtm.webp";
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
+  showWhatsApp?: boolean;
 }
 
 const {
   title = "Revisión tecnomecánica en Bogotá | CDA Tu Revisión",
   description = "CDA Tu Revisión Suba Tabor | CDA Tu Revisión Corabastos | Revisión Técnico Mecánica para Motocicletas 2T y 4T | Suba | Kennedy | Bogotá",
   image = imgRTM.src,
+  showWhatsApp = true,
 } = Astro.props;
+
+// Verificar si estamos en una página de blog
+const currentPath = Astro.url.pathname;
+const isBlogPage = currentPath === "/blog" || currentPath.startsWith("/blog/");
+const shouldShowWhatsApp = showWhatsApp && !isBlogPage;
 ---
 
 <!doctype html>
@@ -61,6 +69,7 @@ const {
     <Header />
     <slot />
     <Footer />
+    {shouldShowWhatsApp && <WhatsAppButton />}
   </body>
 </html>
 
