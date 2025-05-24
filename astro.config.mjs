@@ -3,6 +3,8 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
+  // URL base del sitio web en producción
+  site: "https://cdaturevision.com", // 👈 CAMBIA ESTO POR TU DOMINIO
   // Enable processing of Markdown content
   markdown: {
     shikiConfig: {

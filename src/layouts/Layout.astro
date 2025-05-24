@@ -9,6 +9,7 @@ interface Props {
   description?: string;
   image?: string;
   showWhatsApp?: boolean;
+  canonical?: string; // 👈 Nueva prop para URL canónica personalizada
 }
 
 const {
@@ -16,7 +17,11 @@ const {
   description = "CDA Tu Revisión Suba Tabor | CDA Tu Revisión Corabastos | Revisión Técnico Mecánica para Motocicletas 2T y 4T | Suba | Kennedy | Bogotá",
   image = imgRTM.src,
   showWhatsApp = true,
+  canonical, // 👈 Nueva prop para URL canónica
 } = Astro.props;
+
+// Determinar URL canónica
+const canonicalURL = canonical || Astro.url;
 
 // Verificar si estamos en una página de blog
 const currentPath = Astro.url.pathname;
@@ -52,7 +57,7 @@ const shouldShowWhatsApp = showWhatsApp && !isBlogPage;
     <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href={Astro.url} />
+    <link rel="canonical" href={canonicalURL} />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
