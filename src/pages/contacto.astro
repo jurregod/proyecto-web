@@ -60,6 +60,7 @@ const keywords =
 <Layout title={pageTitle} description={pageDescription} image={pageImage}>
   <!-- Schema.org JSON-LD para SEO -->
   <script
+    is:inline
     type="application/ld+json"
     slot="head"
     set:html={JSON.stringify(schemaData)}

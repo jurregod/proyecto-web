@@ -1,0 +1,321 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, type CollectionEntry, render } from "astro:content";
+
+// Define el tipo de entrada de colección para el blog
+export interface Props {
+  entry: CollectionEntry<"blog">;
+}
+
+// Genera rutas estáticas para todos los artículos de blog
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog", ({ data }) => {
+    // Solo incluir artículos publicados
+    return data.publicado !== false;
+  });
+
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+// Obtener la entrada específica para esta página
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// Metadatos específicos para este artículo
+const pageTitle = `${entry.data.titulo} | CDA Tu Revisión`;
+const pageDescription = entry.data.descripcion;
+const pageImage = entry.data.imagen;
+
+// Datos estructurados para SEO (schema.org)
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: entry.data.titulo,
+  image: new URL(entry.data.imagen, Astro.url).toString(),
+  datePublished: entry.data.fechaPublicacion.toISOString(),
+  dateModified: entry.data.fechaPublicacion.toISOString(),
+  author: {
+    "@type": "Organization",
+    name: entry.data.autor,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "CDA Tu Revisión",
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/favicon.webp", Astro.url).toString(),
+    },
+  },
+  description: pageDescription,
+};
+
+// Keywords para SEO - Podrías personalizar esto en cada entrada
+const keywords = "revisión tecnomecánica, SOAT, CDA Bogotá, motos, automóviles";
+---
+
+<Layout title={pageTitle} description={pageDescription} image={pageImage}>
+  <!-- Schema.org JSON-LD para SEO -->
+  <script
+    is:inline
+    type="application/ld+json"
+    slot="head"
+    set:html={JSON.stringify(schemaData)}
+  />
+
+  <!-- Metadatos adicionales para SEO -->
+  <meta name="keywords" content={keywords} slot="head" />
+  <meta name="robots" content="index, follow" slot="head" />
+  <meta name="author" content="CDA Tu Revisión" slot="head" />
+
+  <main class="articulo-contenedor">
+    <!-- Cabecera del Artículo -->
+    <div class="articulo-header">
+      <div class="articulo-meta">
+        <span class="articulo-categoria">{entry.data.categoria}</span>
+        <span class="articulo-fecha">{entry.data.fecha}</span>
+      </div>
+      <h1 class="articulo-titulo">
+        {entry.data.titulo}
+      </h1>
+      <div class="articulo-autor">
+        <span>Por {entry.data.autor}</span>
+      </div>
+    </div>
+
+    <!-- Imagen Principal del Artículo -->
+    <div class="articulo-imagen-contenedor">
+      <img
+        src={entry.data.imagen}
+        alt={entry.data.imagenAlt}
+        width={900}
+        height={500}
+        class="articulo-imagen"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Contenido del Artículo -->
+    <div class="articulo-contenido">
+      <Content />
+
+      <!-- Llamada a la acción al final del artículo -->
+      <div class="articulo-llamado-accion">
+        <h3>¿Necesitas realizar tu revisión tecnomecánica?</h3>
+        <p>
+          Visita CDA Tu Revisión en nuestras sedes de Suba o Kennedy y obtén tu
+          certificado sin complicaciones.
+        </p>
+        <a href="/contacto/" class="boton-cta">Agenda tu cita</a>
+      </div>
+    </div>
+
+    <!-- Navegación entre artículos -->
+    <div class="articulo-navegacion">
+      <a href="/blog/" class="boton-volver"> ← Volver al blog </a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .articulo-contenedor {
+    max-width: 900px;
+    margin: 2rem auto 4rem;
+    padding: 0 1.5rem;
+  }
+
+  .articulo-header {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .articulo-meta {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .articulo-categoria {
+    color: #51c51b;
+    font-weight: bold;
+  }
+
+  .articulo-fecha {
+    color: #666;
+  }
+
+  .articulo-titulo {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    color: #333;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .articulo-autor {
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  .articulo-imagen-contenedor {
+    margin-bottom: 2.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .articulo-imagen {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .articulo-contenido {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+  }
+
+  .articulo-contenido :global(h2) {
+    font-size: 1.6rem;
+    color: #333;
+    margin: 2rem 0 1rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+  }
+
+  .articulo-contenido :global(h3) {
+    font-size: 1.3rem;
+    color: #333;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .articulo-contenido :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .articulo-contenido :global(ul),
+  .articulo-contenido :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  .articulo-contenido :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .articulo-contenido :global(strong) {
+    color: #333;
+  }
+
+  .articulo-contenido :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .articulo-contenido :global(th),
+  .articulo-contenido :global(td) {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .articulo-contenido :global(th) {
+    background-color: #f8f8f8;
+    color: #333;
+    font-weight: bold;
+  }
+
+  .articulo-contenido :global(tr:hover) {
+    background-color: #f5f5f5;
+  }
+
+  .articulo-conclusiones {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2.5rem;
+    border-left: 4px solid #51c51b;
+  }
+
+  .articulo-llamado-accion {
+    background-color: #eefae8;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2.5rem;
+    text-align: center;
+  }
+
+  .boton-cta {
+    display: inline-block;
+    background: #51c51b;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .boton-cta:hover {
+    background: #47b013;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .articulo-navegacion {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+  }
+
+  .boton-volver {
+    display: inline-block;
+    background: #f5f5f5;
+    color: #333;
+    padding: 0.6rem 1rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .boton-volver:hover {
+    background: #e5e5e5;
+  }
+
+  @media (max-width: 768px) {
+    .articulo-contenedor {
+      padding: 0 1rem;
+      margin: 1.5rem auto 3rem;
+    }
+
+    .articulo-titulo {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+
+    .articulo-contenido {
+      font-size: 1rem;
+    }
+
+    .articulo-contenido :global(h2) {
+      font-size: 1.4rem;
+    }
+
+    .articulo-contenido :global(h3) {
+      font-size: 1.2rem;
+    }
+  }
+</style>

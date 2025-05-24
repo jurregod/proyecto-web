@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
 // Metadatos específicos para la página de blog
 const pageTitle = "Blog | CDA Tu Revisión - Noticias y Consejos";
@@ -7,43 +8,200 @@ const pageDescription =
   "Noticias, consejos y artículos sobre revisión técnico mecánica para motos, normativas vigentes y mantenimiento preventivo de tu vehículo.";
 const pageImage = "/favicon.webp";
 
-// Datos estructurados para SEO (schema.org)
-const schemaData = {
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  name: "Blog CDA Tu Revisión",
-  description:
-    "Artículos informativos sobre revisión técnico mecánica y normativa para motocicletas",
-  url: Astro.url.toString(),
-  publisher: {
-    "@type": "Organization",
-    name: "CDA Tu Revisión",
-    logo: {
-      "@type": "ImageObject",
-      url: new URL("/favicon.webp", Astro.url).toString(),
-    },
-  },
-};
+// Obtener los artículos de la colección de blog
+const articulosCollection = await getCollection("blog", ({ data }) => {
+  return data.publicado !== false; // Solo mostrar los artículos publicados
+});
 
-// Keywords para SEO
-const keywords =
-  "blog CDA, artículos revisión técnico mecánica, consejos motos, RTM, normativa motos Colombia, mantenimiento preventivo motocicletas";
+// Generar slug si no está definido
+const articulos = articulosCollection
+  .map((articulo) => {
+    return {
+      ...articulo,
+      slug: articulo.data.slug || articulo.id.replace(/\.md$/, ""),
+    };
+  })
+  .sort(
+    (a, b) =>
+      b.data.fechaPublicacion.getTime() - a.data.fechaPublicacion.getTime()
+  );
 ---
 
 <Layout title={pageTitle} description={pageDescription} image={pageImage}>
-  <!-- Schema.org JSON-LD para SEO -->
-  <script
-    type="application/ld+json"
-    slot="head"
-    set:html={JSON.stringify(schemaData)}
-  />
+  <!-- JSON-LD para SEO -->
+  <script type="application/ld+json" is:inline>
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Blog CDA Tu Revisión",
+      "description": "Noticias, consejos y artículos sobre revisión técnico mecánica para motos, normativas vigentes y mantenimiento preventivo de tu vehículo.",
+      "url": "https://cdaturevision.com/blog/"
+    }
+  </script>
 
-  <!-- Metadatos adicionales para SEO -->
-  <meta name="keywords" content={keywords} slot="head" />
-  <meta name="robots" content="index, follow" slot="head" />
-  <meta name="author" content="CDA Tu Revisión" slot="head" />
-  <main style="padding:2rem; min-height:60vh; text-align:center;">
-    <h2>Blog</h2>
-    <p>Lee nuestras últimas noticias y artículos.</p>
+  <main class="container">
+    <section class="blog-list">
+      {
+        articulos.map((articulo) => (
+          <article class="blog-entry">
+            <h2 class="entry-title">
+              <a href={`/blog/${articulo.slug}`}>{articulo.data.titulo}</a>
+            </h2>
+
+            <p class="entry-excerpt">{articulo.data.descripcion}</p>
+
+            <div class="entry-meta">
+              <p class="entry-author">
+                <a href="#" class="author-link">
+                  CDA TU REVISION
+                </a>
+              </p>
+              <p class="entry-date">
+                {new Date(articulo.data.fechaPublicacion)
+                  .toLocaleDateString("es-ES", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })
+                  .toUpperCase()}
+              </p>
+            </div>
+
+            <div class="entry-category">
+              <a href="#" class="category-link">
+                {articulo.data.categoria}
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </section>
   </main>
+
+  <style>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .blog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .blog-entry {
+      border-bottom: 1px solid #e5e5e5;
+      padding-bottom: 2rem;
+    }
+
+    .blog-entry:last-child {
+      border-bottom: none;
+    }
+
+    .entry-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
+
+    .entry-title a {
+      color: #1a1a1a;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .entry-title a:hover {
+      color: #51c51b;
+    }
+
+    .entry-excerpt {
+      color: #666;
+      line-height: 1.6;
+      font-size: 1rem;
+      margin: 0 0 1.5rem 0;
+    }
+
+    .entry-meta {
+      margin-bottom: 1rem;
+    }
+
+    .entry-meta p {
+      margin: 0.5rem 0;
+      font-size: 0.9rem;
+    }
+
+    .author-link {
+      color: #51c51b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .author-link:hover {
+      text-decoration: underline;
+    }
+
+    .entry-date {
+      color: #666;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+
+    .entry-category {
+      margin-top: 1rem;
+    }
+
+    .category-link {
+      display: inline-block;
+      background: #f0f9f0;
+      color: #51c51b;
+      padding: 0.4rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+    }
+
+    .category-link:hover {
+      background: #fecc06;
+      color: #1a1a1a;
+      transform: translateY(-1px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .entry-title {
+        font-size: 1.5rem;
+      }
+
+      .blog-list {
+        gap: 2rem;
+      }
+
+      .blog-entry {
+        padding-bottom: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .entry-title {
+        font-size: 1.3rem;
+      }
+
+      .entry-meta {
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+    }
+  </style>
 </Layout>

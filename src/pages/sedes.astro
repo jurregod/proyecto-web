@@ -75,6 +75,7 @@ const keywords =
 <Layout title={pageTitle} description={pageDescription} image={pageImage}>
   <!-- Schema.org JSON-LD para SEO - Ambas sedes -->
   <script
+    is:inline
     type="application/ld+json"
     slot="head"
     set:html={JSON.stringify([schemaSuba, schemaKennedy])}

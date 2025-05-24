@@ -45,7 +45,7 @@ import logoCda from "../assets/logo-cda.webp";
   }
   .header-nav nav a:active,
   .header-nav nav a:focus {
-    color: #fecd08 !important;
+    color: #fecc06 !important;
   }
   .header-nav nav a.active {
     color: #fecc06 !important;
@@ -171,7 +171,10 @@ import logoCda from "../assets/logo-cda.webp";
         >
         <a
           href="/blog"
-          class={Astro.url.pathname === "/blog" ? "active" : ""}
+          class={Astro.url.pathname === "/blog" ||
+          Astro.url.pathname.startsWith("/blog/")
+            ? "active"
+            : ""}
           style="color:#000; text-decoration:none;">BLOG</a
         >
         <a
